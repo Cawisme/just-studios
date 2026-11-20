@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Just Studios — Roblox 3D, VFX, Worlds &amp; Systems</title>
+<meta name="description" content="Just Studios: Roblox 3D models, realistic bosses, faceted &amp; blocky styles, custom skies, armor, VFX, R15 animations, UI hubs, and gameplay mechanics.">
+<meta property="og:title" content="Just Studios — Roblox Portfolio">
+<meta property="og:description" content="Models, custom skies, armor, VFX, animations, UI hubs, and full game mechanics. Concept to live Roblox.">
+<meta property="og:image" content="g/arena_hero.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Montserrat:wght@900&display=swap">
+<style>
+:root {
+  --bg: #07080c;
+  --bg-elev: #0e1017;
+  --bg-card: #121520;
+  --bg-card-hover: #171b29;
+  --border: rgba(255, 255, 255, .08);
+  --border-strong: rgba(255, 255, 255, .16);
+  --text: #f3f4f8;
+  --muted: #9499ad;
+  --dim: #656a7e;
+  --accent: #ff1f44;
+  --accent-glow: rgba(255, 31, 68, .28);
+  --ember: #ff6b3d;
+  --cyan: #38e2ff;
+  --gold: #f5b942;
+  --display: "Bricolage Grotesque", system-ui, sans-serif;
+  --body: "Instrument Sans", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+  --radius: 14px;
+  --radius-sm: 8px;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: var(--bg); }
+body {
+  margin: 0;
+  background:
+    radial-gradient(900px 520px at 85% -10%, rgba(255, 31, 68, .16), transparent 60%),
+    radial-gradient(700px 460px at 10% 18%, rgba(56, 226, 255, .07), transparent 60%),
+    var(--bg);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.55;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+img, video { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.wrap { max-width: 1240px; margin: 0 auto; padding-inline: clamp(18px, 4vw, 36px); }
+
+/* Header */
+.nav-bar {
+  position: sticky; top: 0; z-index: 60;
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  background: rgba(7, 8, 12, .78);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 20px; padding-block: 14px;
+}
+.brand {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: "Montserrat", sans-serif; font-weight: 900; font-size: 20px;
+  letter-spacing: -.02em; white-space: nowrap;
+}
+.brand-mark {
+  width: 28px; height: 28px; border-radius: 7px;
+  background: linear-gradient(135deg, var(--accent), var(--ember));
+  box-shadow: 0 0 22px var(--accent-glow);
+  display: grid; place-items: center; font-size: 14px; color: #fff;
+}
+.nav-links { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 20px; }
+.nav-links a {
+  font-size: 14px; font-weight: 500; color: var(--muted);
+  transition: color .2s ease;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-cta {
+  background: var(--accent); color: #fff !important; font-weight: 600 !important;
+  padding: 8px 16px; border-radius: 999px; font-size: 13px !important;
+  box-shadow: 0 4px 20px var(--accent-glow);
+  transition: transform .2s ease, box-shadow .2s ease !important;
+}
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 8px 28px rgba(255,31,68,.45); }
+
+/* Badges & Typography */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 11px; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent);
+}
+.eyebrow::before {
+  content: ""; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 10px var(--accent);
+}
+h1, h2, h3 { font-family: var(--display); margin: 0; letter-spacing: -.03em; }
+
+/* Hero */
+.hero {
+  padding-block: clamp(44px, 7vw, 88px) clamp(36px, 5vw, 64px);
+  display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
+  gap: clamp(28px, 4vw, 52px); align-items: center;
+}
+.hero h1 {
+  font-size: clamp(42px, 5.8vw, 76px); font-weight: 800; line-height: .96;
+  margin: 16px 0 20px; text-wrap: balance;
+}
+.hero h1 .grad {
+  background: linear-gradient(100deg, #ff2a4f 0%, #ff7a45 55%, #ffd27d 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero-sub {
+  font-size: clamp(16px, 1.5vw, 19px); color: var(--muted);
+  max-width: 48ch; margin: 0 0 28px;
+}
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.btn {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 13px 22px; border-radius: 10px; font-weight: 600; font-size: 15px;
+  border: 1px solid transparent; transition: all .22s ease;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent), #d90f35);
+  color: #fff; box-shadow: 0 10px 30px -6px var(--accent-glow);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 36px -4px rgba(255,31,68,.5); }
+.btn-ghost {
+  background: rgba(255,255,255,.04); border-color: var(--border-strong); color: var(--text);
+}
+.btn-ghost:hover { background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.28); }
+
+.hero-stats {
+  margin-top: 34px; padding-top: 22px; border-top: 1px solid var(--border);
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px;
+}
+.stat b { display: block; font-family: var(--display); font-size: 22px; font-weight: 800; color: var(--text); }
+.stat span { font-family: var(--mono); font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+
+.hero-stage {
+  position: relative; border-radius: 20px; overflow: hidden;
+  background: #0a0b10; border: 1px solid var(--border-strong);
+  box-shadow: 0 30px 90px -20px rgba(0, 0, 0, .85), 0 0 70px -25px var(--accent-glow);
+}
+.hero-stage video { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+.hero-stage-tag {
+  position: absolute; left: 16px; bottom: 16px; right: 16px;
+  display: flex; justify-content: space-between; align-items: center; gap: 10px;
+  padding: 10px 14px; border-radius: 10px;
+  background: rgba(7, 8, 12, .76); backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,.12);
+  font-size: 13px; font-weight: 600;
+}
+.hero-stage-tag span {
+  font-family: var(--mono); font-size: 11px; color: var(--ember); text-transform: uppercase; letter-spacing: .08em;
+}
+
+/* Section Layout */
+section { padding-block: clamp(54px, 7vw, 92px); border-top: 1px solid var(--border); }
+.sec-head {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 14px 44px; align-items: end; margin-bottom: 32px;
+}
+.sec-head h2 { font-size: clamp(30px, 4.2vw, 52px); font-weight: 800; line-height: 1.02; margin-top: 10px; }
+.sec-head p { margin: 0; color: var(--muted); max-width: 54ch; font-size: 16px; }
+
+/* Reveal Animation */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .65s cubic-bezier(.22,1,.36,1), transform .65s cubic-bezier(.22,1,.36,1); }
+.reveal.in { opacity: 1; transform: none; }
+
+/* Before/After Interactive Comparison Sliders */
+.compare-grid {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px;
+}
+.cmp-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden;
+  transition: border-color .25s ease, transform .25s ease;
+}
+.cmp-card:hover { border-color: var(--border-strong); }
+.cmp-stage {
+  position: relative; width: 100%; aspect-ratio: 4 / 3;
+  overflow: hidden; user-select: none; touch-action: none;
+  background: #090a0f; cursor: ew-resize;
+}
+.cmp-card.sq .cmp-stage { aspect-ratio: 4 / 3; }
+.cmp-stage img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; pointer-events: none;
+}
+.cmp-before {
+  position: absolute; inset: 0; overflow: hidden;
+  clip-path: inset(0 50% 0 0);
+}
+.cmp-divider {
+  position: absolute; top: 0; bottom: 0; left: 50%; width: 2px;
+  background: #fff; box-shadow: 0 0 18px rgba(255,31,68,.9), 0 0 6px #fff;
+  transform: translateX(-50%); pointer-events: none;
+}
+.cmp-knob {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 42px; height: 42px; border-radius: 50%;
+  background: rgba(7, 8, 12, .9); border: 2px solid #fff;
+  box-shadow: 0 4px 20px rgba(0,0,0,.7), 0 0 20px var(--accent-glow);
+  display: grid; place-items: center; color: #fff; font-size: 14px; font-weight: 700;
+}
+.cmp-pill {
+  position: absolute; top: 12px; padding: 5px 10px; border-radius: 999px;
+  font-family: var(--mono); font-size: 10px; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase;
+  background: rgba(7, 8, 12, .78); backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,.16); pointer-events: none;
+}
+.cmp-pill.left { left: 12px; color: #d5d8e6; }
+.cmp-pill.right { right: 12px; color: #fff; border-color: rgba(255,31,68,.55); background: rgba(255,31,68,.24); }
+.cmp-meta {
+  padding: 16px 18px; display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
+}
+.cmp-meta h3 { font-size: 18px; font-weight: 700; }
+.cmp-meta span { font-family: var(--mono); font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .07em; }
+.cmp-hint {
+  margin-top: 14px; text-align: center; font-family: var(--mono);
+  font-size: 12px; color: var(--dim); letter-spacing: .06em; text-transform: uppercase;
+}
+
+/* Filter / Style Tabs */
+.tabs {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px;
+}
+.tab-btn {
+  padding: 10px 18px; border-radius: 999px; font-size: 14px; font-weight: 600;
+  background: var(--bg-elev); color: var(--muted);
+  border: 1px solid var(--border); transition: all .2s ease;
+}
+.tab-btn:hover { color: var(--text); border-color: var(--border-strong); }
+.tab-btn.active {
+  background: var(--accent); color: #fff; border-color: var(--accent);
+  box-shadow: 0 6px 22px -4px var(--accent-glow);
+}
+
+/* Media Cards & Grids */
+.style-block { margin-bottom: 42px; transition: opacity .35s ease, transform .35s ease; }
+.style-block.hidden { display: none; }
+.subhead {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline;
+  gap: 8px 20px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border);
+}
+.subhead h3 { font-size: 24px; font-weight: 800; }
+.subhead p { margin: 0; font-size: 14px; color: var(--muted); }
+.style-tag {
+  font-family: var(--mono); font-size: 11px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: .09em; padding: 4px 10px; border-radius: 999px;
+  background: rgba(255,255,255,.06); border: 1px solid var(--border-strong); color: var(--text);
+}
+
+.grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.grid-auto { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px; }
+.grid-golem { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.72fr); gap: 16px; margin-bottom: 16px; }
+
+.card {
+  margin: 0; background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden;
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+.card:hover {
+  transform: translateY(-3px); border-color: var(--border-strong);
+  box-shadow: 0 18px 40px -16px rgba(0, 0, 0, .85);
+}
+.card img, .card video { width: 100%; height: auto; background: #0a0b10; }
+.card img.zoomable { cursor: zoom-in; transition: transform .35s ease; }
+.card:hover img.zoomable { transform: scale(1.03); }
+.card .media-box { overflow: hidden; background: #0a0b10; }
+.card.sq img { aspect-ratio: 1 / 1; object-fit: cover; }
+.card.r43 img { aspect-ratio: 1100 / 820; object-fit: cover; }
+.card.v169 video { aspect-ratio: 16 / 9; object-fit: cover; }
+.card.v21 video { aspect-ratio: 2 / 1; object-fit: cover; }
+.card.v114 video { aspect-ratio: 11 / 4; object-fit: cover; }
+.card.v11 video { aspect-ratio: 1 / 1; object-fit: cover; }
+.card.vslam video { aspect-ratio: 872 / 502; object-fit: cover; }
+.card.big { grid-column: 1 / -1; }
+.card figcaption {
+  padding: 12px 14px; display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
+  font-weight: 600; font-size: 14px;
+}
+.card figcaption span {
+  font-family: var(--mono); font-size: 10.5px; color: var(--muted);
+  text-transform: uppercase; letter-spacing: .07em; white-space: nowrap;
+}
+
+/* Interactive UI Hub & Mechanics Showcase */
+.hub-shell {
+  background: linear-gradient(180deg, #111420 0%, #0b0d14 100%);
+  border: 1px solid var(--border-strong); border-radius: 20px;
+  overflow: hidden; box-shadow: 0 30px 90px -24px rgba(0,0,0,.9);
+}
+.hub-chrome {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 14px 20px; background: rgba(255,255,255,.03); border-bottom: 1px solid var(--border);
+}
+.hub-dots { display: flex; align-items: center; gap: 7px; }
+.hub-dots i { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.18); display: block; }
+.hub-dots i:first-child { background: #ff5f57; }
+.hub-dots i:nth-child(2) { background: #febc2e; }
+.hub-dots i:nth-child(3) { background: #28c840; }
+.hub-tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+.hub-tab {
+  padding: 7px 14px; border-radius: 8px; border: 1px solid transparent;
+  background: transparent; color: var(--muted); font-size: 13px; font-weight: 600;
+  transition: all .2s ease;
+}
+.hub-tab:hover { color: var(--text); background: rgba(255,255,255,.05); }
+.hub-tab.active {
+  background: rgba(255,31,68,.16); color: #fff; border-color: rgba(255,31,68,.45);
+}
+.device-toggle {
+  display: inline-flex; background: rgba(0,0,0,.45); border: 1px solid var(--border);
+  border-radius: 8px; padding: 3px; gap: 3px;
+}
+.device-toggle button {
+  padding: 5px 11px; border-radius: 6px; border: 0; background: transparent;
+  color: var(--muted); font-family: var(--mono); font-size: 11px; text-transform: uppercase;
+}
+.device-toggle button.active { background: rgba(255,255,255,.12); color: #fff; }
+
+.hub-viewport {
+  padding: clamp(20px, 3vw, 34px);
+  display: flex; justify-content: center;
+  background:
+    radial-gradient(600px 260px at 50% 0%, rgba(255,31,68,.12), transparent 70%),
+    #090b11;
+}
+.hub-frame {
+  width: 100%; transition: max-width .35s cubic-bezier(.22,1,.36,1);
+}
+.hub-frame.phone {
+  max-width: 390px; padding: 16px; border-radius: 26px;
+  border: 2px solid rgba(255,255,255,.16); background: #0d1018;
+  box-shadow: 0 20px 60px rgba(0,0,0,.8);
+}
+.hub-panel { display: none; animation: fadeIn .3s ease; }
+.hub-panel.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+/* Mockup Game UI Elements */
+.game-hud-top {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px;
+  margin-bottom: 18px;
+}
+.currency-pills { display: flex; flex-wrap: wrap; gap: 10px; }
+.cpill {
+  padding: 8px 14px; border-radius: 10px; background: rgba(255,255,255,.05);
+  border: 1px solid var(--border-strong); font-family: var(--mono); font-size: 13px; font-weight: 600;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.cpill .dot { width: 9px; height: 9px; border-radius: 50%; }
+.shop-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.hub-frame.phone .shop-grid { grid-template-columns: 1fr; }
+.item-tile {
+  background: linear-gradient(160deg, rgba(255,255,255,.05), rgba(255,255,255,.015));
+  border: 1px solid var(--border-strong); border-radius: 14px; padding: 14px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.item-tile img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 9px; }
+.rarity {
+  font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: .1em;
+  text-transform: uppercase; padding: 3px 8px; border-radius: 999px; align-self: flex-start;
+}
+.r-mythic { background: rgba(255,31,68,.2); color: #ff6b81; border: 1px solid rgba(255,31,68,.4); }
+.r-cosmic { background: rgba(56,226,255,.16); color: #67ebff; border: 1px solid rgba(56,226,255,.4); }
+.r-legend { background: rgba(245,185,66,.18); color: #ffd06b; border: 1px solid rgba(245,185,66,.4); }
+.buy-btn {
+  margin-top: auto; padding: 9px 12px; border-radius: 8px; border: 0;
+  background: var(--accent); color: #fff; font-weight: 700; font-size: 13px;
+  transition: transform .15s ease, filter .15s ease;
+}
+.buy-btn:hover { filter: brightness(1.12); transform: translateY(-1px); }
+
+/* Boss HUD Interactive Demo */
+.boss-bar-wrap {
+  background: rgba(255,255,255,.04); border: 1px solid var(--border-strong);
+  border-radius: 14px; padding: 18px; margin-bottom: 16px;
+}
+.boss-name-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+.boss-name-row b { font-family: var(--display); font-size: 20px; }
+.boss-name-row span { font-family: var(--mono); font-size: 12px; color: var(--ember); }
+.hp-track { height: 16px; border-radius: 999px; background: rgba(0,0,0,.6); overflow: hidden; border: 1px solid rgba(255,255,255,.12); }
+.hp-fill {
+  height: 100%; width: 78%; border-radius: 999px;
+  background: linear-gradient(90deg, #ff1f44, #ff6b3d, #ffb347);
+  transition: width .35s cubic-bezier(.22,1,.36,1);
+}
+.move-deck { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 14px; }
+.hub-frame.phone .move-deck { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.move-btn {
+  padding: 12px; border-radius: 10px; text-align: left;
+  background: rgba(255,255,255,.05); border: 1px solid var(--border-strong); color: var(--text);
+  transition: all .18s ease;
+}
+.move-btn:hover { background: rgba(255,31,68,.16); border-color: rgba(255,31,68,.55); transform: translateY(-2px); }
+.move-btn small { display: block; font-family: var(--mono); font-size: 10px; color: var(--muted); text-transform: uppercase; margin-bottom: 4px; }
+.move-btn strong { font-size: 14px; }
+
+/* Mechanics Feature Cards */
+.mech-grid {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 26px;
+}
+.mech-card {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 22px; transition: border-color .2s ease, transform .2s ease;
+}
+.mech-card:hover { border-color: var(--border-strong); transform: translateY(-2px); }
+.mech-icon {
+  width: 38px; height: 38px; border-radius: 10px; margin-bottom: 14px;
+  background: rgba(255,31,68,.12); border: 1px solid rgba(255,31,68,.3);
+  display: grid; place-items: center; font-family: var(--mono); font-size: 15px; color: var(--accent); font-weight: 700;
+}
+.mech-card h3 { font-size: 19px; font-weight: 700; margin-bottom: 8px; }
+.mech-card p { margin: 0; font-size: 14.5px; color: var(--muted); }
+
+/* Contact & Socials */
+.contact-box {
+  position: relative; overflow: hidden;
+  background:
+    radial-gradient(600px 320px at 90% 10%, rgba(255,31,68,.22), transparent 65%),
+    linear-gradient(135deg, #121521 0%, #0b0d14 100%);
+  border: 1px solid var(--border-strong); border-radius: 22px;
+  padding: clamp(28px, 5vw, 56px);
+  display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+  gap: 28px 48px; align-items: center;
+}
+.contact-box h2 { font-size: clamp(32px, 4.4vw, 54px); font-weight: 800; line-height: 1; margin-bottom: 14px; }
+.contact-box p { margin: 0; color: var(--muted); max-width: 46ch; }
+.social-stack { display: flex; flex-direction: column; gap: 14px; }
+.social-card {
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  padding: 16px 18px; border-radius: 14px;
+  background: rgba(255,255,255,.04); border: 1px solid var(--border-strong);
+  transition: background .2s ease, border-color .2s ease;
+}
+.social-card:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.28); }
+.social-left { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.social-ico {
+  width: 42px; height: 42px; border-radius: 11px; flex: 0 0 auto;
+  display: grid; place-items: center; background: rgba(255,255,255,.08);
+}
+.social-left small { display: block; font-family: var(--mono); font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+.social-left strong { font-family: var(--mono); font-size: 18px; color: #fff; }
+.copy-btn {
+  padding: 9px 16px; border-radius: 8px; border: 0;
+  background: #fff; color: #090a0f; font-weight: 700; font-size: 13px;
+  transition: transform .15s ease, background .15s ease;
+}
+.copy-btn:hover { background: var(--accent); color: #fff; transform: translateY(-1px); }
+
+footer {
+  padding-block: 30px 48px; color: var(--dim); font-size: 14px;
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px;
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed; inset: 0; z-index: 120;
+  background: rgba(4, 5, 9, .92); backdrop-filter: blur(14px);
+  display: none; place-items: center; padding: 24px;
+}
+.lightbox.open { display: grid; }
+.lightbox img { max-width: min(1100px, 94vw); max-height: 86vh; border-radius: 12px; border: 1px solid var(--border-strong); box-shadow: 0 30px 90px rgba(0,0,0,.9); }
+.lb-close {
+  position: fixed; top: 20px; right: 24px; width: 42px; height: 42px;
+  border-radius: 50%; border: 1px solid var(--border-strong);
+  background: rgba(15, 17, 26, .85); color: #fff; font-size: 20px;
+}
+
+@media (max-width: 960px) {
+  .hero, .sec-head, .contact-box, .grid-golem { grid-template-columns: 1fr; }
+  .compare-grid, .grid-3, .mech-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .compare-grid, .grid-2, .grid-3, .mech-grid { grid-template-columns: 1fr; }
+  .grid-4, .grid-auto { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav-bar">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#"><span class="brand-mark">J</span>Just Studios</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#compare">Ref &rarr; Model</a>
+      <a href="#styles">Model Styles</a>
+      <a href="#worlds">Skies &amp; Worlds</a>
+      <a href="#armor">Armor &amp; Gear</a>
+      <a href="#motion">VFX &amp; Anim</a>
+      <a href="#systems">UI &amp; Mechanics</a>
+      <a class="nav-cta" href="#contact">Hire Us</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <div class="wrap">
+    <section class="hero" style="border-top:0;">
+      <div class="reveal in">
+        <div class="eyebrow">Roblox Production Studio</div>
+        <h1>Concept art to <span class="grad">live Roblox</span> in any style.</h1>
+        <p class="hero-sub">Realistic 4K PBR bosses, faceted creatures, smooth 3D, blocky stylized assets, custom painted skies, R6 armor, VFX, R15 animations, UI hubs, and gameplay mechanics — built to ship on PC and mobile.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#compare">Drag Reference &rarr; 3D</a>
+          <a class="btn btn-ghost" href="#contact">Contact on Discord</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><b>5+ Styles</b><span>PBR, Faceted, Blocky</span></div>
+          <div class="stat"><b>4K PBR</b><span>Blender &rarr; Roblox</span></div>
+          <div class="stat"><b>Full Rig</b><span>R6, R15 &amp; Bosses</span></div>
+          <div class="stat"><b>End-to-End</b><span>Art, VFX, UI &amp; Code</span></div>
+        </div>
+      </div>
+      <div class="hero-stage reveal in">
+        <video src="g/turntable.mp4" poster="g/turntable.jpg" autoplay muted loop playsinline></video>
+        <div class="hero-stage-tag">
+          <div>Rock Golem Boss &bull; 39 Animated Parts</div>
+          <span>4K PBR &bull; In Roblox</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- INTERACTIVE REFERENCE TO MODEL COMPARISONS -->
+  <section id="compare">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <div class="eyebrow">Interactive Comparison</div>
+          <h2>Image to final 3D model</h2>
+        </div>
+        <p>Send a concept sheet, sketch, or reference image — we match the silhouette, proportions, materials, and personality in any style you want. Drag any slider below to compare.</p>
+      </div>
+
+      <div class="compare-grid reveal">
+        <article class="cmp-card">
+          <div class="cmp-stage" data-compare="50" role="slider" aria-label="Rock Golem reference to 3D comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+            <img src="g/front.webp" alt="Rock Golem final 3D model render">
+            <div class="cmp-before"><img src="cmp/golem_ref.webp" alt="Rock Golem concept reference image"></div>
+            <div class="cmp-divider"><div class="cmp-knob">&harr;</div></div>
+            <span class="cmp-pill left">Reference</span>
+            <span class="cmp-pill right">Final 3D</span>
+          </div>
+          <div class="cmp-meta">
+            <h3>Rock Golem</h3>
+            <span>Realistic 4K PBR</span>
+          </div>
+        </article>
+
+        <article class="cmp-card">
+          <div class="cmp-stage" data-compare="50" role="slider" aria-label="Cosmic Serpent reference to 3D comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+            <img src="s/front34.webp" alt="Cosmic Serpent final faceted 3D model">
+            <div class="cmp-before"><img src="cmp/serpent_ref.webp" alt="Cosmic Serpent concept reference sheet"></div>
+            <div class="cmp-divider"><div class="cmp-knob">&harr;</div></div>
+            <span class="cmp-pill left">Reference</span>
+            <span class="cmp-pill right">Final 3D</span>
+          </div>
+          <div class="cmp-meta">
+            <h3>Cosmic Serpent</h3>
+            <span>Faceted Style</span>
+          </div>
+        </article>
+
+        <article class="cmp-card">
+          <div class="cmp-stage" data-compare="50" role="slider" aria-label="Star Whale reference to 3D comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+            <img src="w/front34.webp" alt="Star Whale final smooth 3D model">
+            <div class="cmp-before"><img src="cmp/whale_ref.webp" alt="Star Whale concept reference sheet"></div>
+            <div class="cmp-divider"><div class="cmp-knob">&harr;</div></div>
+            <span class="cmp-pill left">Reference</span>
+            <span class="cmp-pill right">Final 3D</span>
+          </div>
+          <div class="cmp-meta">
+            <h3>Star Whale</h3>
+            <span>Smooth 3D Style</span>
+          </div>
+        </article>
+      </div>
+      <div class="cmp-hint">Drag or swipe left &amp; right across any card &bull; Click any gallery render below to zoom</div>
+    </div>
+  </section>
+
+  <!-- MODEL STYLES SHOWCASE WITH FILTER TABS -->
+  <section id="styles">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <div class="eyebrow">Multi-Style 3D Pipeline</div>
+          <h2>Every style, built to ship</h2>
+        </div>
+        <p>Whether your game is dark realistic fantasy, crisp faceted low-poly, smooth stylized creatures, or classic blocky Roblox — switch styles below to explore each lane.</p>
+      </div>
+
+      <div class="tabs reveal" role="tablist" aria-label="Filter model styles">
+        <button class="tab-btn active" data-filter="all" type="button">All Styles</button>
+        <button class="tab-btn" data-filter="realistic" type="button">Realistic 4K PBR</button>
+        <button class="tab-btn" data-filter="faceted" type="button">Faceted Style</button>
+        <button class="tab-btn" data-filter="smooth" type="button">Smooth 3D</button>
+        <button class="tab-btn" data-filter="blocky" type="button">Blocky &amp; Weapons</button>
+      </div>
+
+      <!-- REALISTIC -->
+      <div class="style-block reveal" data-cat="realistic">
+        <div class="subhead">
+          <div>
+            <h3>Rock Golem Boss</h3>
+            <p>Six players tall, carved basalt plates split by glowing magma, 4K PBR textures, 39 moving parts, live ground slam in Roblox.</p>
+          </div>
+          <span class="style-tag">Realistic 4K PBR</span>
+        </div>
+        <div class="grid-golem">
+          <figure class="card v11">
+            <video src="g/turntable.mp4" poster="g/turntable.jpg" autoplay muted loop playsinline></video>
+            <figcaption>Rock Golem <span>360&deg; Turntable</span></figcaption>
+          </figure>
+          <figure class="card vslam">
+            <video src="g/slam.mp4" poster="g/slam.jpg" autoplay muted loop playsinline></video>
+            <figcaption>Ground Slam Attack <span>Live in Roblox</span></figcaption>
+          </figure>
+        </div>
+        <div class="grid-4">
+          <figure class="card sq"><div class="media-box"><img class="zoomable" loading="lazy" src="g/q34l.webp" alt="Rock Golem front three-quarter"></div><figcaption>Front 3/4 <span>Basalt &amp; Magma</span></figcaption></figure>
+          <figure class="card sq"><div class="media-box"><img class="zoomable" loading="lazy" src="g/face.webp" alt="Rock Golem face and halo close-up"></div><figcaption>Face &amp; Halo <span>Close-up</span></figcaption></figure>
+          <figure class="card sq"><div class="media-box"><img class="zoomable" loading="lazy" src="g/chest.webp" alt="Rock Golem chest and rune seal 4K PBR"></div><figcaption>Chest &amp; Runes <span>4K PBR</span></figcaption></figure>
+          <figure class="card sq"><div class="media-box"><img class="zoomable" loading="lazy" src="g/back.webp" alt="Rock Golem back view"></div><figcaption>Back Plates <span>Full 360</span></figcaption></figure>
+        </div>
+      </div>
+
+      <!-- FACETED -->
+      <div class="style-block reveal" data-cat="faceted">
+        <div class="subhead">
+          <div>
+            <h3>Cosmic Serpent</h3>
+            <p>Sharp faceted low-poly geometry with real modelled scales, fangs, horns, blinking eyes, opening jaw, and six custom animations.</p>
+          </div>
+          <span class="style-tag">Faceted Style</span>
+        </div>
+        <div class="grid-4" style="margin-bottom:16px;">
+          <figure class="card"><div class="media-box"><img class="zoomable" loading="lazy" src="s/front34.webp" alt="Cosmic Serpent front 3/4"></div><figcaption>Front 3/4 <span>Faceted</span></figcaption></figure>
+          <figure class="card"><div class="media-box"><img class="zoomable" loading="lazy" src="s/head_34_left.webp" alt="Cosmic Serpent head close-up"></div><figcaption>Head &amp; Fangs <span>Close-up</span></figcaption></figure>
+          <figure class="card"><div class="media-box"><img class="zoomable" loading="lazy" src="s/side.webp" alt="Cosmic Serpent side view"></div><figcaption>Side Profile <span>Silhouette</span></figcaption></figure>
+          <figure class="card"><div class="media-box"><img class="zoomable" loading="lazy" src="s/back34.webp" alt="Cosmic Serpent back 3/4"></div><figcaption>Hood &amp; Spines <span>Back 3/4</span></figcaption></figure>
+        </div>
+        <div class="grid-2">
+          <figure class="card v114"><video src="s/idle.mp4" poster="s/idle.jpg" autoplay muted loop playsinline></video><figcaption>Idle <span>Body &amp; Face</span></figcaption></figure>
+          <figure class="card v114"><video src="s/attack.mp4" poster="s/attack.jpg" autoplay muted loop playsinline></video><figcaption>Attack <span>Strike &amp; Jaw</span></figcaption></figure>
+          <figure class="card v114"><video src="s/roar.mp4" poster="s/roar.jpg" autoplay muted loop playsinline></video><figcaption>Roar <span>Facial Rig</span></figcaption></figure>
+          <figure class="card v114"><video src="s/special.mp4" poster="s/special.jpg" autoplay muted loop playsinline></video><figcaption>Special Move <span>Signature</span></figcaption></figure>
+        </div>
+      </div>
+
+      <!-- SMOOTH 3D -->
+      <div class="style-block reveal" data-cat="smooth">
+        <div class="subhead">
+          <div>
+            <h3>Star Whale</h3>
+            <p>Smooth rounded 3D sculpt with glowing star markings, crystal ridge, real opening jaw, floating orbit ring, and player mount seat.</p>
+          </div>
+          <span class="style-tag">Smooth 3D Style</span>
+        </div>
+        <div class="grid-4" style="margin-bottom:16px;">
+          <figure class="card"><div class="media-box"><img class="zoomable" loading="lazy" src="w/front34.webp" alt="Star Whale front 3/4"></div><figcaption>Front 3/4 <span>Smooth 3D</span></figcaption></figure>
+          <figure class="card"><div class="media-box"><img class="zoomable" loading="lazy" src="w/head.webp" alt="Star Whale head close-up"></div><figcaption>Head &amp; Teeth <span>Close-up</span></figcaption></figure>
+          <figure class="card"><div class="media-box"><img class="zoomable" loading="lazy" src="w/side.webp" alt="Star Whale side view with rider"></div><figcaption>Mount Scale <span>Rideable</span></figcaption></figure>
+          <figure class="card"><div class="media-box"><img class="zoomable" loading="lazy" src="w/front.webp" alt="Star Whale front open mouth"></div><figcaption>Open Jaw <span>Front View</span></figcaption></figure>
+        </div>
+        <div class="grid-3">
+          <figure class="card"><video src="w/turntable.mp4" poster="w/turntable.jpg" autoplay muted loop playsinline></video><figcaption>Turntable <span>360&deg;</span></figcaption></figure>
+          <figure class="card"><video src="w/roar.mp4" poster="w/roar.jpg" autoplay muted loop playsinline></video><figcaption>Roar <span>Jaw &amp; Face</span></figcaption></figure>
+          <figure class="card"><video src="w/run.mp4" poster="w/run.jpg" autoplay muted loop playsinline></video><figcaption>Fast Swim <span>Motion</span></figcaption></figure>
+        </div>
+      </div>
+
+      <!-- BLOCKY & WEAPONS -->
+      <div class="style-block reveal" data-cat="blocky">
+        <div class="subhead">
+          <div>
+            <h3>Blocky Creatures, Weapons, Shields &amp; Props</h3>
+            <p>Stylized blocky creatures, collectible eggs, scythes, hammers, shields, props, and seasonal characters — rigged and Studio-ready.</p>
+          </div>
+          <span class="style-tag">Blocky &amp; Stylized</span>
+        </div>
+        <div class="grid-auto">
+          <figure class="card r43"><div class="media-box"><img class="zoomable" loading="lazy" src="m/abuse_tempest_wyrmling.webp" alt="Tempest Wyrmling"></div><figcaption>Tempest Wyrmling <span>Blocky Pet</span></figcaption></figure>
+          <figure class="card r43"><div class="media-box"><img class="zoomable" loading="lazy" src="m/star_whale_egg.webp" alt="Star Whale Egg"></div><figcaption>Star Whale Egg <span>Egg</span></figcaption></figure>
+          <figure class="card r43"><div class="media-box"><img class="zoomable" loading="lazy" src="m/golden_goose_egg.webp" alt="Golden Goose Egg"></div><figcaption>Golden Goose Egg <span>Egg</span></figcaption></figure>
+          <figure class="card r43"><div class="media-box"><img class="zoomable" loading="lazy" src="m/bumblebee_egg.webp" alt="Bumblebee Egg"></div><figcaption>Bumblebee Egg <span>Egg</span></figcaption></figure>
+          <figure class="card r43"><div class="media-box"><img class="zoomable" loading="lazy" src="m/crimson_reaper.webp" alt="Crimson Reaper"></div><figcaption>Crimson Reaper <span>Scythe</span></figcaption></figure>
+          <figure class="card r43"><div class="media-box"><img class="zoomable" loading="lazy" src="m/foxfire_reaper.webp" alt="Foxfire Reaper"></div><figcaption>Foxfire Reaper <span>Scythe</span></figcaption></figure>
+          <figure class="card r43"><div class="media-box"><img class="zoomable" loading="lazy" src="m/cosmic_gavel.webp" alt="Cosmic Gavel"></div><figcaption>Cosmic Gavel <span>Hammer</span></figcaption></figure>
+          <figure class="card r43"><div class="media-box"><img class="zoomable" loading="lazy" src="m/abyss_gavel.webp" alt="Abyss Gavel"></div><figcaption>Abyss Gavel <span>Hammer</span></figcaption></figure>
+          <figure class="card r43"><div class="media-box"><img class="zoomable" loading="lazy" src="m/anvil_breaker.webp" alt="Anvil Breaker"></div><figcaption>Anvil Breaker <span>Hammer</span></figcaption></figure>
+          <figure class="card r43"><div class="media-box"><img class="zoomable" loading="lazy" src="m/frostbite.webp" alt="Frostbite Club"></div><figcaption>Frostbite <span>Ice Club</span></figcaption></figure>
+          <figure class="card r43"><div class="media-box"><img class="zoomable" loading="lazy" src="m/bonebreaker.webp" alt="Bonebreaker Shield"></div><figcaption>Bonebreaker <span>Shield</span></figcaption></figure>
+          <figure class="card r43"><div class="media-box"><img class="zoomable" loading="lazy" src="m/ember_ward.webp" alt="Ember Ward Shield"></div><figcaption>Ember Ward <span>Shield</span></figcaption></figure>
+          <figure class="card r43"><div class="media-box"><img class="zoomable" loading="lazy" src="m/frost_aegis.webp" alt="Frost Aegis Shield"></div><figcaption>Frost Aegis <span>Shield</span></figcaption></figure>
+          <figure class="card r43"><div class="media-box"><img class="zoomable" loading="lazy" src="m/void_eye.webp" alt="Void Eye Shield"></div><figcaption>Void Eye <span>Shield</span></figcaption></figure>
+          <figure class="card r43"><div class="media-box"><img class="zoomable" loading="lazy" src="m/dawnwing.webp" alt="Dawnwing Shield"></div><figcaption>Dawnwing <span>Shield</span></figcaption></figure>
+          <figure class="card r43"><div class="media-box"><img class="zoomable" loading="lazy" src="m/owner_throne.webp" alt="Owner's Throne Prop"></div><figcaption>Owner's Throne <span>Prop</span></figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CUSTOM SKIES & BOSS WORLDS -->
+  <section id="worlds">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <div class="eyebrow">Custom Skies &amp; Environments</div>
+          <h2>Painted skies &amp; boss arenas</h2>
+        </div>
+        <p>Hand-painted skyboxes, volumetric atmosphere, live lightning storms, glowing floor rune seals, and full playable arenas tuned for high FPS in Roblox.</p>
+      </div>
+      <div class="grid-2 reveal">
+        <figure class="card big"><div class="media-box"><img class="zoomable" loading="lazy" src="g/arena_hero.webp" alt="Rock Golem burning under a blood-red storm sky"></div><figcaption>Blood-Red Storm Sky &amp; Boss Arena <span>Custom Painted Skybox + Live Lightning</span></figcaption></figure>
+        <figure class="card"><div class="media-box"><img class="zoomable" loading="lazy" src="g/arena_tower.webp" alt="Storm eye custom sky with forked lightning"></div><figcaption>Storm Eye <span>Custom Sky &amp; Lightning</span></figcaption></figure>
+        <figure class="card"><div class="media-box"><img class="zoomable" loading="lazy" src="cmp/cosmos_sky.webp" alt="Cosmos zone custom starry sky and floating islands"></div><figcaption>Cosmos Biome Sky <span>Nebula Atmosphere</span></figcaption></figure>
+        <figure class="card"><div class="media-box"><img class="zoomable" loading="lazy" src="g/arena_wide.webp" alt="Boss arena wide shot with broken arches"></div><figcaption>Arena Architecture <span>Floating Ruins</span></figcaption></figure>
+        <figure class="card"><div class="media-box"><img class="zoomable" loading="lazy" src="g/arena_rim.webp" alt="Glowing red rune seal in stone floor"></div><figcaption>Rune Seal &amp; Lighting <span>Floor Detail</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARMOR & GEAR STYLES -->
+  <section id="armor">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <div class="eyebrow">Armor, Outfits &amp; Weapons</div>
+          <h2>Unique armor styles for R6 &amp; RPGs</h2>
+        </div>
+        <p>From sleek R6 cloaks and anime uniforms to chunky pixel dungeon sets and high-detail modelled plate with animated capes, helms, and legendary greatswords.</p>
+      </div>
+
+      <div class="tabs reveal" id="armorTabs">
+        <button class="tab-btn active" data-armor="r6" type="button">R6 Outfits &amp; Cloaks</button>
+        <button class="tab-btn" data-armor="modelled" type="button">Modelled 3D Armor</button>
+        <button class="tab-btn" data-armor="pixel" type="button">Pixel Dungeon Gear</button>
+      </div>
+
+      <!-- R6 -->
+      <div class="armor-panel" data-armor-panel="r6">
+        <div class="grid-4">
+          <figure class="card sq"><div class="media-box"><img class="zoomable" loading="lazy" src="o/white_f34.webp" alt="White cloak R6 uniform"></div><figcaption>White Cloak <span>R6 Outfit</span></figcaption></figure>
+          <figure class="card sq"><div class="media-box"><img class="zoomable" loading="lazy" src="o/white_close.webp" alt="White cloak gold clasp close-up"></div><figcaption>Gold Clasp <span>PBR Detail</span></figcaption></figure>
+          <figure class="card sq"><div class="media-box"><img class="zoomable" loading="lazy" src="o/black_f34.webp" alt="Black cape R6 uniform"></div><figcaption>Black Cape <span>R6 Outfit</span></figcaption></figure>
+          <figure class="card sq"><div class="media-box"><img class="zoomable" loading="lazy" src="o/black_close.webp" alt="Black cape silver collar close-up"></div><figcaption>Silver Collar <span>PBR Detail</span></figcaption></figure>
+          <figure class="card sq"><div class="media-box"><img class="zoomable" loading="lazy" src="o/white_back34.webp" alt="White cloak back view"></div><figcaption>Rigged Cape <span>Back 3/4</span></figcaption></figure>
+          <figure class="card sq"><div class="media-box"><img class="zoomable" loading="lazy" src="o/black_back34.webp" alt="Black cape back view"></div><figcaption>Heavy Pleats <span>Back 3/4</span></figcaption></figure>
+          <figure class="card sq"><div class="media-box"><img class="zoomable" loading="lazy" src="o/seraph_r6.webp" alt="Seraph armor on R6"></div><figcaption>Seraph Plate <span>R6 Armor</span></figcaption></figure>
+          <figure class="card sq"><div class="media-box"><img class="zoomable" loading="lazy" src="o/abyssal_r6.webp" alt="Abyssal armor on R6"></div><figcaption>Abyssal Plate <span>R6 Armor</span></figcaption></figure>
+        </div>
+      </div>
+
+      <!-- MODELLED 3D ARMOR -->
+      <div class="armor-panel" data-armor-panel="modelled" style="display:none;">
+        <div class="grid-4" style="margin-bottom:16px;">
+          <figure class="card"><div class="media-box"><img class="zoomable" loading="lazy" src="p/angel3d_front34.webp" alt="Seraph Paladin armor"></div><figcaption>Seraph Paladin <span>Modelled</span></figcaption></figure>
+          <figure class="card"><div class="media-box"><img class="zoomable" loading="lazy" src="p/demon3d_front34.webp" alt="Abyssal Tyrant armor"></div><figcaption>Abyssal Tyrant <span>Modelled</span></figcaption></figure>
+          <figure class="card"><div class="media-box"><img class="zoomable" loading="lazy" src="p/st_samurai_front34.webp" alt="Samurai armor"></div><figcaption>Red Samurai <span>Modelled</span></figcaption></figure>
+          <figure class="card"><div class="media-box"><img class="zoomable" loading="lazy" src="p/dread_front34.webp" alt="Crimson Dread armor"></div><figcaption>Crimson Dread <span>Modelled</span></figcaption></figure>
+          <figure class="card"><div class="media-box"><img class="zoomable" loading="lazy" src="p/st_royal_front34.webp" alt="Royal Sentinel armor"></div><figcaption>Royal Sentinel <span>Modelled</span></figcaption></figure>
+          <figure class="card"><div class="media-box"><img class="zoomable" loading="lazy" src="p/st_crystal_front34.webp" alt="Crystal Warden armor"></div><figcaption>Crystal Warden <span>Modelled</span></figcaption></figure>
+          <figure class="card"><div class="media-box"><img class="zoomable" loading="lazy" src="p/mythic_front34.webp" alt="Emerald Mythic armor"></div><figcaption>Emerald Mythic <span>Modelled</span></figcaption></figure>
+          <figure class="card"><div class="media-box"><img class="zoomable" loading="lazy" src="p/sword3d_hero.webp" alt="Cursed Greatsword"></div><figcaption>Cursed Greatsword <span>Weapon</span></figcaption></figure>
+        </div>
+        <div class="grid-3">
+          <figure class="card v169"><video src="p/angel3d_turn.mp4" poster="p/angel3d_turn.jpg" autoplay muted loop playsinline></video><figcaption>Seraph Paladin <span>Turntable</span></figcaption></figure>
+          <figure class="card v169"><video src="p/demon3d_turn.mp4" poster="p/demon3d_turn.jpg" autoplay muted loop playsinline></video><figcaption>Abyssal Tyrant <span>Turntable</span></figcaption></figure>
+          <figure class="card v169"><video src="p/sword3d_slash.mp4" poster="p/sword3d_slash.jpg" autoplay muted loop playsinline></video><figcaption>Cursed Greatsword <span>Slash VFX</span></figcaption></figure>
+        </div>
+      </div>
+
+      <!-- PIXEL GEAR -->
+      <div class="armor-panel" data-armor-panel="pixel" style="display:none;">
+        <div class="grid-4" style="margin-bottom:16px;">
+          <figure class="card"><div class="media-box"><img class="zoomable" loading="lazy" src="p/pix_seraph_front34.webp" alt="Pixel Seraph armor"></div><figcaption>Pixel Seraph <span>Pixel Style</span></figcaption></figure>
+          <figure class="card"><div class="media-box"><img class="zoomable" loading="lazy" src="p/pix_abyss_front34.webp" alt="Pixel Abyss armor"></div><figcaption>Pixel Abyss <span>Pixel Style</span></figcaption></figure>
+          <figure class="card"><div class="media-box"><img class="zoomable" loading="lazy" src="p/pix_frost_front34.webp" alt="Pixel Frostwarden armor"></div><figcaption>Frostwarden <span>Pixel Style</span></figcaption></figure>
+          <figure class="card"><div class="media-box"><img class="zoomable" loading="lazy" src="p/pix_ronin_front34.webp" alt="Pixel Ronin armor"></div><figcaption>Pixel Ronin <span>Pixel Style</span></figcaption></figure>
+        </div>
+        <div class="grid-3">
+          <figure class="card v169"><video src="p/pix_seraph_turn.mp4" poster="p/pix_seraph_turn.jpg" autoplay muted loop playsinline></video><figcaption>Pixel Seraph <span>Turntable</span></figcaption></figure>
+          <figure class="card v169"><video src="p/sword_idle.mp4" poster="p/sword_idle.jpg" autoplay muted loop playsinline></video><figcaption>Ember Greatsword <span>Idle VFX</span></figcaption></figure>
+          <figure class="card v169"><video src="p/sword_slash.mp4" poster="p/sword_slash.jpg" autoplay muted loop playsinline></video><figcaption>Ember Greatsword <span>Slash</span></figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VFX & R15 ANIMATIONS -->
+  <section id="motion">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <div class="eyebrow">VFX &amp; Animation</div>
+          <h2>Custom effects &amp; R15 packs</h2>
+        </div>
+        <p>Full mutation effect sets, weapon slashes, hit-stops, and eight-clip R15 animation packs built with real weight and personality.</p>
+      </div>
+
+      <div class="subhead reveal">
+        <div><h3>Mutation VFX — One Egg, Six Full Looks</h3><p>Each mutation swaps particles, glow, motion, and atmosphere on the fly.</p></div>
+        <span class="style-tag">Roblox VFX</span>
+      </div>
+      <div class="grid-3 reveal" style="margin-bottom:44px;">
+        <figure class="card v169"><video src="v/galaxy.mp4" poster="v/galaxy.jpg" autoplay muted loop playsinline></video><figcaption>Galaxy <span>VFX Set</span></figcaption></figure>
+        <figure class="card v169"><video src="v/molten.mp4" poster="v/molten.jpg" autoplay muted loop playsinline></video><figcaption>Molten <span>VFX Set</span></figcaption></figure>
+        <figure class="card v169"><video src="v/frozen.mp4" poster="v/frozen.jpg" autoplay muted loop playsinline></video><figcaption>Frozen <span>VFX Set</span></figcaption></figure>
+        <figure class="card v169"><video src="v/shocked.mp4" poster="v/shocked.jpg" autoplay muted loop playsinline></video><figcaption>Shocked <span>VFX Set</span></figcaption></figure>
+        <figure class="card v169"><video src="v/toxic.mp4" poster="v/toxic.jpg" autoplay muted loop playsinline></video><figcaption>Toxic <span>VFX Set</span></figcaption></figure>
+        <figure class="card v169"><video src="v/rainbow.mp4" poster="v/rainbow.jpg" autoplay muted loop playsinline></video><figcaption>Rainbow <span>VFX Set</span></figcaption></figure>
+      </div>
+
+      <div class="subhead reveal">
+        <div><h3>R15 Animation Packs</h3><p>Complete sets of eight (idle, walk, run, jump, fall, climb, swim, swim idle) tested on standard R15 rigs.</p></div>
+        <span class="style-tag">R15 Motion</span>
+      </div>
+      <div class="grid-3 reveal">
+        <figure class="card v21"><video src="a/flight.mp4" poster="a/flight.jpg" autoplay muted loop playsinline></video><figcaption>Flying Hero <span>Idle</span></figcaption></figure>
+        <figure class="card v21"><video src="a/strut.mp4" poster="a/strut.jpg" autoplay muted loop playsinline></video><figcaption>Proud Villain <span>Walk</span></figcaption></figure>
+        <figure class="card v21"><video src="a/stalker.mp4" poster="a/stalker.jpg" autoplay muted loop playsinline></video><figcaption>Creeping Stalker <span>Walk</span></figcaption></figure>
+        <figure class="card v21"><video src="a/broom.mp4" poster="a/broom.jpg" autoplay muted loop playsinline></video><figcaption>Broom Rider <span>Idle</span></figcaption></figure>
+        <figure class="card v21"><video src="a/brute.mp4" poster="a/brute.jpg" autoplay muted loop playsinline></video><figcaption>Heavy Brute <span>Idle</span></figcaption></figure>
+        <figure class="card v21"><video src="a/idol.mp4" poster="a/idol.jpg" autoplay muted loop playsinline></video><figcaption>Pop Idol <span>Idle</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE UI HUB & GAMEPLAY MECHANICS -->
+  <section id="systems">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div>
+          <div class="eyebrow">Beyond Models</div>
+          <h2>UI hubs, trailers &amp; custom mechanics</h2>
+        </div>
+        <p>We don't just hand over static meshes — we design responsive game UIs, cinematic trailer sequences, and complete playable mechanics for PC and mobile. Try the interactive preview below.</p>
+      </div>
+
+      <div class="hub-shell reveal">
+        <div class="hub-chrome">
+          <div class="hub-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="hub-tabs" id="hubTabs">
+            <button class="hub-tab active" data-hub="shop" type="button">Shop &amp; Inventory UI</button>
+            <button class="hub-tab" data-hub="combat" type="button">Boss Combat HUD</button>
+            <button class="hub-tab" data-hub="trailer" type="button">Trailer &amp; Cutscenes</button>
+          </div>
+          <div class="device-toggle" id="deviceToggle" aria-label="Preview device">
+            <button class="active" data-dev="pc" type="button">PC</button>
+            <button data-dev="phone" type="button">Phone</button>
+          </div>
+        </div>
+
+        <div class="hub-viewport">
+          <div class="hub-frame" id="hubFrame">
+            <!-- SHOP UI DEMO -->
+            <div class="hub-panel active" data-hub-panel="shop">
+              <div class="game-hud-top">
+                <div class="currency-pills">
+                  <div class="cpill"><span class="dot" style="background:var(--gold)"></span><span id="demoCash">$2,450,000</span></div>
+                  <div class="cpill"><span class="dot" style="background:var(--cyan)"></span><span>14 / 20 Pets</span></div>
+                </div>
+                <span class="style-tag" style="color:var(--gold);border-color:rgba(245,185,66,.4);">Live UI Preview</span>
+              </div>
+              <div class="shop-grid">
+                <div class="item-tile">
+                  <span class="rarity r-mythic">Mythic Boss</span>
+                  <img src="g/q34l.webp" alt="Rock Golem preview">
+                  <strong>Obsidian Golem</strong>
+                  <button class="buy-btn" data-cost="450000" type="button">Equip &bull; $450K</button>
+                </div>
+                <div class="item-tile">
+                  <span class="rarity r-cosmic">Cosmic Tier</span>
+                  <img src="w/front34.webp" alt="Star Whale preview">
+                  <strong>Star Whale Mount</strong>
+                  <button class="buy-btn" data-cost="280000" type="button">Equip &bull; $280K</button>
+                </div>
+                <div class="item-tile">
+                  <span class="rarity r-legend">Legendary</span>
+                  <img src="p/sword3d_hero.webp" alt="Cursed Greatsword preview">
+                  <strong>Cursed Greatsword</strong>
+                  <button class="buy-btn" data-cost="120000" type="button">Equip &bull; $120K</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- BOSS COMBAT HUD DEMO -->
+            <div class="hub-panel" data-hub-panel="combat">
+              <div class="boss-bar-wrap">
+                <div class="boss-name-row">
+                  <b>ANCIENT ROCK GOLEM</b>
+                  <span id="bossHpText">7,800 / 10,000 HP</span>
+                </div>
+                <div class="hp-track"><div class="hp-fill" id="bossHpFill"></div></div>
+                <div style="margin-top:10px;font-family:var(--mono);font-size:12px;color:var(--muted);" id="combatLog">Phase 1 &bull; Click any ability below to test HUD feedback &amp; combo counter</div>
+              </div>
+              <div class="move-deck">
+                <button class="move-btn" data-dmg="850" data-name="Crimson Slash" type="button"><small>Key [1] &bull; 850 DMG</small><strong>Crimson Slash</strong></button>
+                <button class="move-btn" data-dmg="1400" data-name="Magma Breaker" type="button"><small>Key [2] &bull; 1.4K DMG</small><strong>Magma Breaker</strong></button>
+                <button class="move-btn" data-dmg="2100" data-name="Void Nova" type="button"><small>Key [3] &bull; 2.1K DMG</small><strong>Void Nova</strong></button>
+                <button class="move-btn" data-dmg="-10000" data-name="Reset Boss" type="button"><small>Key [R] &bull; Reset</small><strong>Reset Encounter</strong></button>
+              </div>
+            </div>
+
+            <!-- TRAILER & CUTSCENES DEMO -->
+            <div class="hub-panel" data-hub-panel="trailer">
+              <div class="grid-2">
+                <figure class="card vslam"><video src="g/slam.mp4" poster="g/slam.jpg" autoplay muted loop playsinline></video><figcaption>Boss Encounter Shot <span>Cinematic Camera + FX</span></figcaption></figure>
+                <figure class="card v169"><video src="p/sword3d_slash.mp4" poster="p/sword3d_slash.jpg" autoplay muted loop playsinline></video><figcaption>Weapon Reveal Cut <span>Impact &amp; Trail Framing</span></figcaption></figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CUSTOM MECHANICS HIGHLIGHTS -->
+      <div class="mech-grid reveal">
+        <div class="mech-card">
+          <div class="mech-icon">01</div>
+          <h3>Boss AI &amp; Phase Mechanics</h3>
+          <p>Multi-phase encounters with telegraphed attacks, ground-slam shockwaves, hitbox timing, and smooth camera shake.</p>
+        </div>
+        <div class="mech-card">
+          <div class="mech-icon">02</div>
+          <h3>Dynamic Weather &amp; Live Events</h3>
+          <p>Real-time skybox transitions, lightning strikes, mutation storms, and server-wide admin events with zero lag spikes.</p>
+        </div>
+        <div class="mech-card">
+          <div class="mech-icon">03</div>
+          <h3>Pets, Hatching &amp; Mutations</h3>
+          <p>Full egg hatching reveals, rarity odds, multi-size scaling, mount riding, inventories, and collection indexes.</p>
+        </div>
+        <div class="mech-card">
+          <div class="mech-icon">04</div>
+          <h3>Mobile-First Game UIs</h3>
+          <p>Dedicated phone and PC layouts — crisp shops, hotbars, quest trackers, and menus that never shrink into unreadable clutter.</p>
+        </div>
+        <div class="mech-card">
+          <div class="mech-icon">05</div>
+          <h3>Cutscenes &amp; Trailer Visuals</h3>
+          <p>In-engine camera paths, boss intros, hatch cinematics, and high-impact promotional clips ready for YouTube Shorts and X.</p>
+        </div>
+        <div class="mech-card">
+          <div class="mech-icon">06</div>
+          <h3>Economy, Saves &amp; Leaderboards</h3>
+          <p>Exploit-resistant progression, Robux passes and products, persistent player saves, and live global leaderboards.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT & SOCIALS -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-box reveal">
+        <div>
+          <div class="eyebrow">Commissions Open</div>
+          <h2>Let's build your next hit.</h2>
+          <p>Send a reference image or a quick idea and we'll reply with pricing and delivery time. Available for single assets, full boss packs, UI hubs, or end-to-end Roblox games. Paid in USD or Robux.</p>
+        </div>
+        <div class="social-stack">
+          <div class="social-card">
+            <div class="social-left">
+              <div class="social-ico" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="#7289da"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028z"/></svg>
+              </div>
+              <div>
+                <small>Discord &bull; Fastest Reply</small>
+                <strong id="discordHandle">X_Caw_X</strong>
+              </div>
+            </div>
+            <button class="copy-btn" id="copyDiscord" type="button">Copy</button>
+          </div>
+
+          <a class="social-card" href="https://x.com/X_Caw_X" target="_blank" rel="noopener noreferrer">
+            <div class="social-left">
+              <div class="social-ico" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </div>
+              <div>
+                <small>X / Twitter</small>
+                <strong>@X_Caw_X</strong>
+              </div>
+            </div>
+            <span class="copy-btn">Visit &rarr;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="wrap">
+  <footer>
+    <span>&copy; 2026 Just Studios &mdash; All models, skies, VFX, animations &amp; systems crafted in-house.</span>
+    <span>Discord: X_Caw_X</span>
+  </footer>
+</div>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lb-close" id="lbClose" type="button" aria-label="Close">&times;</button>
+  <img id="lbImg" src="" alt="">
+</div>
+
+<script>
+(function () {
+  // Scroll reveal
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+  // Interactive Reference -> Model Comparison Sliders
+  document.querySelectorAll('.cmp-stage').forEach(function (stage) {
+    var before = stage.querySelector('.cmp-before');
+    var divider = stage.querySelector('.cmp-divider');
+    var dragging = false;
+
+    function setPos(pct) {
+      pct = Math.max(4, Math.min(96, pct));
+      before.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+      divider.style.left = pct + '%';
+      stage.setAttribute('aria-valuenow', Math.round(pct));
+    }
+    function updateFromClientX(x) {
+      var r = stage.getBoundingClientRect();
+      setPos(((x - r.left) / r.width) * 100);
+    }
+
+    stage.addEventListener('pointerdown', function (e) {
+      dragging = true;
+      stage.setPointerCapture(e.pointerId);
+      updateFromClientX(e.clientX);
+    });
+    stage.addEventListener('pointermove', function (e) {
+      if (dragging) updateFromClientX(e.clientX);
+    });
+    stage.addEventListener('pointerup', function () { dragging = false; });
+    stage.addEventListener('pointercancel', function () { dragging = false; });
+    stage.addEventListener('keydown', function (e) {
+      var cur = Number(stage.getAttribute('aria-valuenow')) || 50;
+      if (e.key === 'ArrowLeft') setPos(cur - 6);
+      if (e.key === 'ArrowRight') setPos(cur + 6);
+    });
+    setPos(50);
+  });
+
+  // Model Style Filter Tabs
+  var filterBtns = document.querySelectorAll('[data-filter]');
+  var blocks = document.querySelectorAll('.style-block');
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var f = btn.dataset.filter;
+      filterBtns.forEach(function (b) { b.classList.toggle('active', b === btn); });
+      blocks.forEach(function (blk) {
+        var show = f === 'all' || blk.dataset.cat === f;
+        blk.classList.toggle('hidden', !show);
+      });
+    });
+  });
+
+  // Armor Style Tabs
+  var armorBtns = document.querySelectorAll('[data-armor]');
+  var armorPanels = document.querySelectorAll('[data-armor-panel]');
+  armorBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var t = btn.dataset.armor;
+      armorBtns.forEach(function (b) { b.classList.toggle('active', b === btn); });
+      armorPanels.forEach(function (p) {
+        p.style.display = p.dataset.armorPanel === t ? '' : 'none';
+      });
+    });
+  });
+
+  // Interactive UI Hub Demo
+  var hubBtns = document.querySelectorAll('[data-hub]');
+  var hubPanels = document.querySelectorAll('[data-hub-panel]');
+  hubBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var t = btn.dataset.hub;
+      hubBtns.forEach(function (b) { b.classList.toggle('active', b === btn); });
+      hubPanels.forEach(function (p) { p.classList.toggle('active', p.dataset.hubPanel === t); });
+    });
+  });
+
+  var devBtns = document.querySelectorAll('[data-dev]');
+  var hubFrame = document.getElementById('hubFrame');
+  devBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      devBtns.forEach(function (b) { b.classList.toggle('active', b === btn); });
+      hubFrame.classList.toggle('phone', btn.dataset.dev === 'phone');
+    });
+  });
+
+  // Shop Demo Cash Feedback
+  var cash = 2450000;
+  var cashEl = document.getElementById('demoCash');
+  document.querySelectorAll('.buy-btn').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var cost = Number(b.dataset.cost) || 0;
+      if (cash >= cost) {
+        cash -= cost;
+        cashEl.textContent = '$' + cash.toLocaleString();
+        b.textContent = 'Equipped!';
+        b.style.background = '#1ea866';
+      } else {
+        b.textContent = 'Not enough cash';
+      }
+    });
+  });
+
+  // Boss Combat Demo
+  var hp = 7800, maxHp = 10000, combo = 0;
+  var hpFill = document.getElementById('bossHpFill');
+  var hpText = document.getElementById('bossHpText');
+  var logEl = document.getElementById('combatLog');
+  document.querySelectorAll('.move-btn').forEach(function (m) {
+    m.addEventListener('click', function () {
+      var dmg = Number(m.dataset.dmg);
+      if (dmg < 0) {
+        hp = maxHp; combo = 0;
+        logEl.textContent = 'Boss reset to full health.';
+      } else {
+        hp = Math.max(0, hp - dmg); combo++;
+        logEl.textContent = hp === 0
+          ? 'BOSS DEFEATED! (' + combo + 'x Combo)'
+          : m.dataset.name + ' hit for ' + dmg.toLocaleString() + ' DMG • ' + combo + 'x Combo';
+      }
+      hpFill.style.width = ((hp / maxHp) * 100) + '%';
+      hpText.textContent = hp.toLocaleString() + ' / ' + maxHp.toLocaleString() + ' HP';
+    });
+  });
+
+  // Lightbox
+  var lb = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lbImg');
+  document.querySelectorAll('img.zoomable').forEach(function (img) {
+    img.addEventListener('click', function () {
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lb.classList.add('open');
+      lb.setAttribute('aria-hidden', 'false');
+    });
+  });
+  function closeLb() { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); }
+  document.getElementById('lbClose').addEventListener('click', closeLb);
+  lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLb(); });
+
+  // Copy Discord Handle
+  var copyBtn = document.getElementById('copyDiscord');
+  var handleEl = document.getElementById('discordHandle');
+  copyBtn.addEventListener('click', function () {
+    navigator.clipboard.writeText(handleEl.textContent).then(function () {
+      copyBtn.textContent = 'Copied!';
+      setTimeout(function () { copyBtn.textContent = 'Copy'; }, 1600);
+    });
+  });
+})();
+</script>
+</body>
+</html>
